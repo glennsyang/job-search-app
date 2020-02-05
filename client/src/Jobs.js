@@ -1,5 +1,6 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
+import Filter from './Filter';
 import Job from './Job';
 import JobModal from './JobModal';
 import MobileStepper from '@material-ui/core/MobileStepper';
@@ -61,6 +62,7 @@ export default function Jobs({ jobs }) {
             <Typography variant="h6" component="h2">
                 Found {numJobs} Jobs
             </Typography>
+            <Filter />
             {
                 jobsOnPage.map(
                     (job, i) => <Job key={i} job={job} onClick={() => {
