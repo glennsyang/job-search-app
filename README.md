@@ -9,5 +9,5 @@ Front-end developed in React. Back-end API uses Express. Pulls from Github Jobs 
 
 - [React](https://es.reactjs.org/) - Front-End JavaScript library
 - [Material UI](https://material-ui.com/getting-started/installation/) - Front-End UI library
-- [Cron](https://github.com/kelektiv/node-cron#readme)Cron for NodeJS
-- [ExpressJS](https://github.com/expressjs/expressjs.com/blob/gh-pages/en/starter/installing.md)ExpressJS
+- [Cron](https://github.com/kelektiv/node-cron#readme) - Node.js Cron jobs
+- [ExpressJS](https://github.com/expressjs/expressjs.com/blob/gh-pages/en/starter/installing.md) - Web Framework for Node.js
