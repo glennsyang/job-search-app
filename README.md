@@ -1,4 +1,5 @@
-The 100 minute startup
-The end result of trying to build a MVP for entrylevelsoftwarejobs.com in 100 minutes.
+Entry Level Software Jobs
 
-Check out the full tutorial "The 100 minute startup" at https://youtube.com/codedrip
+Listing of entry level software jobs from Github Jobs and Remote OK.
+
+Front-end developed in React. Back-end API uses Express. Pulls from Github Jobs and RemoteOK public APIs. Clicking on the job listing opens modal window where you can apply directly to the job. Ability to filter the job listings by Location.

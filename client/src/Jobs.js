@@ -1,12 +1,24 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import Filter from './Filter';
+import Paper from '@material-ui/core/Paper';
 import Job from './Job';
 import JobModal from './JobModal';
+import { makeStyles } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+
+const useStyles = makeStyles(theme => ({
+    formControl: {
+        margin: theme.spacing(3),
+    },
+}));
 
 export default function Jobs({ jobs }) {
 
@@ -53,6 +65,18 @@ export default function Jobs({ jobs }) {
         scrollToTop();
     }
 
+    // filtering
+    const classes = useStyles();
+    const [value, setValue] = React.useState('all');
+    const unfilteredJobs = jobs;
+
+    const handleChange = event => {
+        console.log(event.target.value);
+        setValue(event.target.value);
+        const filteredJobs = jobs.filter(e => e.location.includes("OH"));
+        console.log("jobs:", filteredJobs.length);
+    };
+
     return (
         <div className="jobs">
             <JobModal open={open} job={selectedJob} handleClose={handleClose} />
@@ -62,7 +86,19 @@ export default function Jobs({ jobs }) {
             <Typography variant="h6" component="h2">
                 Found {numJobs} Jobs
             </Typography>
-            <Filter />
+            <div>
+                <Paper className='location'>
+                    <FormControl component="fieldset" className={classes.formControl}>
+                        <FormLabel component="legend">Location</FormLabel>
+                        <RadioGroup aria-label="position" name="position" value={value} onChange={handleChange} row>
+                            <FormControlLabel value="all" control={<Radio />} label="All" />
+                            <FormControlLabel value="usa" control={<Radio />} label="U.S." />
+                            <FormControlLabel value="international" control={<Radio />} label="International" />
+                            <FormControlLabel value="remote" control={<Radio />} label="Remote" />
+                        </RadioGroup>
+                    </FormControl>
+                </Paper>
+            </div>
             {
                 jobsOnPage.map(
                     (job, i) => <Job key={i} job={job} onClick={() => {
